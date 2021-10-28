@@ -1,0 +1,245 @@
+﻿<Window x:Class="Coffee.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Coffee"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:uc="clr-namespace:Coffee.Control"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Name="mainWindow"
+        DataContext="{StaticResource MainVM}"
+        Title="MainWindow" Height="600" Width="900">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=mainWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="RosyBrown">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="10"></Setter>
+                        <Setter Property="Width" Value="auto"></Setter>
+                        <Setter Property="Background" Value="RosyBrown"></Setter>
+                        <Setter Property="FontSize" Value="15"></Setter>
+                        <Setter Property="BorderBrush" Value="RosyBrown"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Button Grid.Row="0">
+                    <Image Source="/Image/coffee_logo.png"></Image>
+                </Button>
+                <Button Command="{Binding AccountCommand}" Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:PackIcon Kind="AccountKey" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock Text="  ACCOUNT"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </Button>
+                <Button Command="{Binding TableCommand}" Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:PackIcon Kind="Table" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock Margin="0 0 2 0" Text="  TABLE"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </Button>
+                <Button Command="{Binding MenuCommand}" Grid.Row="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:PackIcon Kind="Coffee" RenderTransformOrigin="-1.119,0.256" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock Margin="0 0 2 0" Text="  MENU"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </Button>
+                <Button Grid.Row="4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:PackIcon Kind="ChartLine" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock Margin="0 0 2 0" Text="  TOTAL REVENUE"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </Button>
+                <Button Grid.Row="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:PackIcon Kind="KeyVariant" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock Margin="0 0 2 0" Text="  LOG OUT"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </Button>
+
+            </Grid>
+
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <WrapPanel Margin="0 0 50 0">
+                                <Label Content="Name:" VerticalAlignment="Bottom" Margin="0 0 10 0"></Label>
+                                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                              materialDesign:HintAssist.Hint="name"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            </WrapPanel>
+                            <WrapPanel Margin="0 0 50 0">
+                                <Label Content="Price:" VerticalAlignment="Bottom" Margin="0 0 10 0"></Label>
+                                <TextBox  Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"
+                              materialDesign:HintAssist.Hint="price"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            </WrapPanel>
+                        </WrapPanel>
+
+                        <Grid Grid.Row="1">
+                            <materialDesign:Card Grid.Column="1" Margin="5" VerticalAlignment="Top">
+                                <ListView ItemsSource="{Binding MainList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Height="auto">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                            <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                            <GridViewColumn Header="Category" DisplayMemberBinding="{Binding FoodCategory.CategoryName}"></GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </materialDesign:Card>
+                            
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <WrapPanel Grid.Row="0" VerticalAlignment="Center">
+                            <WrapPanel>
+                            <Label Content="Category:" VerticalAlignment="Bottom" Margin="0 0 10 0"></Label>
+                            <ComboBox DisplayMemberPath="CategoryName" ItemsSource="{Binding Category}" SelectedItem="{Binding SelectedFoodCategory , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0 0 50 0"
+                              materialDesign:HintAssist.Hint="F  or  D"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Table" VerticalAlignment="Bottom" Margin="0 0 10 0"></Label>
+                                <ComboBox DisplayMemberPath="TableName" ItemsSource="{Binding Table}" SelectedItem="{Binding SelectedTable , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0 0 50 0"
+                              materialDesign:HintAssist.Hint="table name"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                            </WrapPanel>
+                        </WrapPanel>
+                        <Grid Grid.Row="1">
+                            <materialDesign:Card Grid.Column="1"  Margin="5" VerticalAlignment="Top">
+                            <ListView ItemsSource="{Binding SetMenu}"  Height="auto">
+                                <ListView.View>
+                                        <GridView>
+                                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding SetMenuName, UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                        <GridViewColumn Header="Price" DisplayMemberBinding="{Binding SetMenuPrice, UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                        <GridViewColumn Header="Table" DisplayMemberBinding="{Binding SetMenuTableName}"></GridViewColumn>
+                                        <GridViewColumn Header="Category" DisplayMemberBinding="{Binding SetMenuCategory}"></GridViewColumn>
+                                        </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <WrapPanel Margin="0 0 50 0">
+                            <Label Content="TOTAL " VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30 0 0 0" FontSize="20"></Label>
+                            <Border BorderThickness="2" BorderBrush="Black">
+                                <TextBlock Text="{Binding SetTotal}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="20" FontSize="18" TextAlignment="Center"/>
+                            </Border>
+                        </WrapPanel>
+                        <Button Command="{Binding AddToBillCommand}" Margin="50 0 0 0"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Width="110"
+                            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Add to card">
+                        </Button>
+                        <Button Command="{Binding PayCommand}" Margin="50 0 0 0"
+                             Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                             Width="100"
+                             ToolTip="Resource name: MaterialDesignRaisedAccentButton" Content="PAY">
+                        </Button>
+                    </WrapPanel>
+                </Grid>
+                
+            </Grid>
+
+
+        </Grid>
+    </Grid>
+</Window>
